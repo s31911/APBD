@@ -8,7 +8,7 @@ public class Camera : Equipment
     
     
         
-    Camera(string name,AvailabilityStatus status,string producent,int sensorSize) : base(name,status)
+    public Camera(string name,AvailabilityStatus status,string producent,int sensorSize) : base(name,status)
     {
         Producent = producent;
         SensorSize = sensorSize;
