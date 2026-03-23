@@ -1,4 +1,23 @@
-﻿Console.WriteLine("Hello, World!");
+﻿namespace ConsoleApp1;
+    
+using ConsoleApp1.Database;
+
+public class Program
+{
+
+    public static AppDatabase AppDatabase = new AppDatabase();
+    public static void Main()
+    {
+        Console.WriteLine("Hello, World!");
+    }
+
+    public void ShowAllReports()
+    {
+        
+    }
+    
+}
+
 
 //TODO
 // 1. Dodanie nowego użytkownika do systemu.
@@ -10,4 +29,5 @@
 // 7. Oznaczenie sprzętu jako niedostępnego, np. z powodu uszkodzenia lub serwisu.
 // 8. Wyświetlenie aktywnych wypożyczeń danego użytkownika.
 // 9. Wyświetlenie listy przeterminowanych wypożyczeń.
-// 10. Wygenerowanie krótkiego raportu podsumowującego stan wypożyczalni -> proponuje jakis console raport we wszystkich klasach
+// 10. Wygenerowanie krótkiego raportu podsumowującego stan wypożyczalni.
+// należałoby sie zasntanowić nad zmiana struktur danych (statycznych list) w klasach 

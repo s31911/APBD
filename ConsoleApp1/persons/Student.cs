@@ -17,7 +17,15 @@ public class Student : Person
         //TODO
         // check for equiptment that have been given out?
         // i need to chaeck if somebody exceeds new limit 
+        // Add coment to read me 
         RentalLimit = newLimit;
     }
+
+    public override void ImposeFine(double numberOfDays)
+    {
+        // TODO
+        // wymysl jaka kare  
+    }
+
  
 }

@@ -13,4 +13,9 @@ public class Employee : Person
     {
         return RentalLimit;
     }
+    public override void ImposeFine(double numberOfDays)
+    {
+        // TODO
+        // wymysl jaka kare   
+    }
 }

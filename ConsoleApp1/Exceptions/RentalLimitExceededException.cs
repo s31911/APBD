@@ -31,7 +31,7 @@ public class RentalLimitExceededException : Exception
     public override string ToString()
     {
         string equipmentMessage = ""; 
-        if(RentedEquipment!=null) equipmentMessage = $"trying to rent {RentedEquipment.Id} {RentedEquipment.Name}";
+        if(RentedEquipment != null) equipmentMessage = $"trying to rent {RentedEquipment.Id} {RentedEquipment.Name}";
         return "Person: " + Id + FullName + "Exceeded Rental limit of: "+ RentalLimit+ equipmentMessage + base.ToString();
     }
 }

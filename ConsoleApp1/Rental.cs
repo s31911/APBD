@@ -6,22 +6,24 @@ namespace ConsoleApp1;
 
 public class Rental
 {
+    #nullable enable
+    public static List<Rental> Rentals = new List<Rental>();
     public DateTime RentDate { get; set; }
     public DateTime PlanedReturnDate { get; set; }
-    public DateTime ReturnDate { get; set; }
+    public DateTime? ReturnDate { get; set; }
     public Equipment Equipment{ get; set; }
     public Person Person { get; set; }
     public Rental(Equipment equipment, Person person, DateTime planedReturnDate)
     {
-        // TODO dokonczyc rental
-        // potrzebujemy na pewno w equipment metody Rent() zeby dzia
 
         if (person.GetRentLimit() > person.CurrentlyRent + 1) throw new RentalLimitExceededException(person);
+        if (equipment.Availability == Equipment.AvailabilityStatus.Unavailable) throw new EquipmentUnavalibleForRentException(this);
         
         Person = person;
         Equipment = equipment;
         PlanedReturnDate = planedReturnDate;
         RentDate = DateTime.Now;
+        Rentals.Add(this);
     }
     public Rental(Equipment equipment, Person person,DateTime planedReturnDate,DateTime rentDate)
     : this(equipment, person,planedReturnDate)
@@ -34,5 +36,16 @@ public class Rental
         ReturnDate = DateTime.Now;
         Equipment.Availability = Equipment.AvailabilityStatus.Available;
         Person.CurrentlyRent--;
+        if (ReturnDate > PlanedReturnDate) Person.ImposeFine(((ReturnDate ?? throw new Exception("Now return Date on returning item")) - PlanedReturnDate ).TotalDays );
+    }
+
+    public override string ToString()
+    {
+        return $"Rental {Equipment} by {Person} on {RentDate} Planned return: {PlanedReturnDate} Actual Return: {(ReturnDate.ToString() ?? "Not yed returned" )}";
+    }
+
+    public static void ShowReport()
+    {
+        Console.Write($"Total Rentals{Rentals.Count}");
     }
 }

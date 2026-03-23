@@ -26,10 +26,56 @@ public abstract class Equipment
         return Id;
     }
 
+    public override string ToString()
+    {
+        return $"Equipment #{Id}  - {Name} availability: {Availability}";
+    }
+
     public static List<Equipment> GetEquipments()
     {
         return Equipments;
     }
 
+    public static void ShowAllEquipments()
+    {
+        foreach (var equipment in Equipments)
+        {
+            Console.Write(equipment);
+        }
+    }
+    public static void ShowAvailableEquipments()
+    {
+        foreach (var equipment in Equipments)
+        {
+            if(equipment.Availability == AvailabilityStatus.Available) Console.Write(equipment);
+        }
+    }
+    public static void ShowUnavailableEquipments()
+    {
+        foreach (var equipment in Equipments)
+        {
+            if(equipment.Availability == AvailabilityStatus.Unavailable) Console.Write(equipment);
+        }
+    }
 
+    public static void ShowReport()
+    {
+        int available = 0;
+        int unavailable = 0;
+
+        foreach (var equipment in Equipments)
+        {
+            if (equipment.Availability == AvailabilityStatus.Unavailable)
+            {
+                unavailable++;
+            }
+            else
+            {
+                available++;
+            }
+        }
+        Console.WriteLine($"Equipments: |Available : {available}|Unavailable : {unavailable}|Total : {Equipments.Count}|");
+
+    }
+    
 }
