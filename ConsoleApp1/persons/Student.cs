@@ -4,7 +4,7 @@ public class Student : Person
 {
     public static int RentalLimit = 5;
 
-    Student( string firstName, string lastName) : base(firstName, lastName)
+    public Student( string firstName, string lastName) : base(firstName, lastName)
     {
         
     }
