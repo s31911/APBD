@@ -45,8 +45,16 @@ public abstract class Person
         {
             if (rental.Person == this && rental.ReturnDate == null)
             {
-                Console.Write(rental);
+                Console.WriteLine(rental);
             }
+        }
+    }
+
+    public static void ShowAllPersons()
+    {
+        foreach (var person in persons)
+        {
+            Console.WriteLine(person);
         }
     }
 

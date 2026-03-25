@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1;
+﻿using ConsoleApp1.UI;
+
+namespace ConsoleApp1;
     
 using ConsoleApp1.Database;
 
@@ -6,14 +8,16 @@ public class Program
 {
 
     public static AppDatabase AppDatabase = new AppDatabase();
+    public static bool exit = false;
     public static void Main()
     {
-        Console.WriteLine("Hello, World!");
-    }
-
-    public void ShowAllReports()
-    {
-        
+        UiHandler  uiHandler = new UiHandler();
+        while (exit == false)
+        {
+            uiHandler.handle(Console.ReadLine());
+            
+        }
+        Console.Write("Thank you for using our app.");
     }
     
 }

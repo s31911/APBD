@@ -9,7 +9,7 @@ public abstract class Equipment
     public AvailabilityStatus Availability {get; set;}
     public enum AvailabilityStatus
     {
-        Available,Unavailable
+        Available ,Unavailable
     }
     protected Equipment(string name,AvailabilityStatus status) 
     {
@@ -40,21 +40,21 @@ public abstract class Equipment
     {
         foreach (var equipment in Equipments)
         {
-            Console.Write(equipment);
+            Console.WriteLine(equipment);
         }
     }
     public static void ShowAvailableEquipments()
     {
         foreach (var equipment in Equipments)
         {
-            if(equipment.Availability == AvailabilityStatus.Available) Console.Write(equipment);
+            if(equipment.Availability == AvailabilityStatus.Available) Console.WriteLine(equipment);
         }
     }
     public static void ShowUnavailableEquipments()
     {
         foreach (var equipment in Equipments)
         {
-            if(equipment.Availability == AvailabilityStatus.Unavailable) Console.Write(equipment);
+            if(equipment.Availability == AvailabilityStatus.Unavailable) Console.WriteLine(equipment);
         }
     }
 
@@ -74,7 +74,7 @@ public abstract class Equipment
                 available++;
             }
         }
-        Console.WriteLine($"Equipments: |Available : {available}|Unavailable : {unavailable}|Total : {Equipments.Count}|");
+        Console.WriteLine($"Equipments: |Available : {available} |Unavailable : {unavailable}|Total : {Equipments.Count}|");
 
     }
     

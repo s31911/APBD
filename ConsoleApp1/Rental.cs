@@ -8,6 +8,9 @@ public class Rental
 {
     #nullable enable
     public static List<Rental> Rentals = new List<Rental>();
+    private static int _lastId = 0; 
+    
+    public int id { get; set; }
     public DateTime RentDate { get; set; }
     public DateTime PlanedReturnDate { get; set; }
     public DateTime? ReturnDate { get; set; }
@@ -16,9 +19,9 @@ public class Rental
     public Rental(Equipment equipment, Person person, DateTime planedReturnDate)
     {
 
-        if (person.GetRentLimit() > person.CurrentlyRent + 1) throw new RentalLimitExceededException(person);
+        if (person.GetRentLimit() < person.CurrentlyRent + 1) throw new RentalLimitExceededException(person);
         if (equipment.Availability == Equipment.AvailabilityStatus.Unavailable) throw new EquipmentUnavalibleForRentException(this);
-        
+        id = _lastId++;
         Person = person;
         Equipment = equipment;
         PlanedReturnDate = planedReturnDate;
@@ -41,11 +44,11 @@ public class Rental
 
     public override string ToString()
     {
-        return $"Rental {Equipment} by {Person} on {RentDate} Planned return: {PlanedReturnDate} Actual Return: {(ReturnDate.ToString() ?? "Not yed returned" )}";
+        return $"Rental #{id} {Equipment} by {Person} on {RentDate} Planned return: {PlanedReturnDate} Actual Return: {(ReturnDate.ToString() ?? "Not yed returned" )}";
     }
 
     public static void ShowReport()
     {
-        Console.Write($"Total Rentals{Rentals.Count}");
+        Console.WriteLine($"Total Rentals: {Rentals.Count}");
     }
 }
