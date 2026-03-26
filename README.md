@@ -28,5 +28,8 @@ Dla wizualizacji stworzyłem schemat który zamieszczam poniżej. Jest to gdzie�
 
 Szczegółowe informacje i moje komentarze znajdują się w odpowiednich linkach poniżej.
 ## Linki
-
-
+[Rentals](ConsoleApp1/rentals/Readme.md)
+[Persons](ConsoleApp1/persons/Readme.md)
+[UI](ConsoleApp1/UI/Readme.md)
+[Exceptions](ConsoleApp1/Exceptions/Readme.md)
+[Database](ConsoleApp1/Database/Readme.md)
