@@ -18,12 +18,16 @@ public class ShowCommand : MyCommand
         {
             Console.Clear();
             Console.WriteLine("What would you like to show?");
-            Console.WriteLine("Possible options: {rental = r} {persons = p} {equipment = e} {availableequipment = ae} {fullreport = fr}");
-            Console.WriteLine("{rentalreport = rr} {equipmentreport = er} {personreport = pr}");
+            Console.WriteLine("Possible options: {rental = r} {persons = p} {equipment = e} {availableequipment = ae} {expiredrentals = er ");
+            Console.WriteLine("{fullreport = fr} {rentalreport = rr} {equipmentreport = er} {personreport = pr}");
             Console.WriteLine("{exit = q}");
 
             switch (Console.ReadLine())
             {
+                case "expiredrentals":
+                case "er":
+                    Rental.ShowExpiredRentals();
+                    break;
                 case "p":
                 case "persons":
                     Person.ShowAllPersons();

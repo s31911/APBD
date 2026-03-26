@@ -50,7 +50,7 @@ public class Rental
         ReturnDate = DateTime.Now;
         Equipment.Availability = Equipment.AvailabilityStatus.Available;
         Person.CurrentlyRent--;
-        if (ReturnDate > PlanedReturnDate) Person.ImposeFine(((ReturnDate ?? throw new Exception("Now return Date on returning item")) - PlanedReturnDate ).TotalDays );
+        if (ReturnDate > PlanedReturnDate) Person.ImposeFine(((ReturnDate ?? throw new Exception("No return Date on returning item")) - PlanedReturnDate ).TotalDays );
     }
 
     public override string ToString()
@@ -65,7 +65,17 @@ public class Rental
             Console.WriteLine(rental);
         }
     }
-
+    public static void ShowExpiredRentals()
+    {
+        foreach (var rental in Rentals)
+        {
+            if (rental.PlanedReturnDate < rental.ReturnDate)
+            {
+                Console.WriteLine(rental);
+            }
+        }  
+        
+    }
     public static void ShowReport()
     {
         Console.WriteLine($"Total Rentals: {Rentals.Count}");

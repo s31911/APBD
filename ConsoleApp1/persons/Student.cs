@@ -2,7 +2,7 @@
 
 public class Student : Person
 {
-    public static int RentalLimit = 5;
+    private static int RentalLimit = 2;
 
     public Student( string firstName, string lastName) : base(firstName, lastName)
     {
@@ -14,17 +14,12 @@ public class Student : Person
     }
     public void ChangeRentalLimit(int newLimit)
     {
-        //TODO
-        // check for equiptment that have been given out?
-        // i need to chaeck if somebody exceeds new limit 
-        // Add coment to read me 
         RentalLimit = newLimit;
     }
 
     public override void ImposeFine(double numberOfDays)
     {
-        // TODO
-        // wymysl jaka kare  
+        CurrentlyRent++;
     }
 
  
