@@ -13,8 +13,11 @@ public class UiHandler : IsUiHandler
         commands.Add(new ShowCommand());
         commands.Add(new RemoveEquipmentCommand());
         commands.Add(new RemovePersonCommand());
+        commands.Add(new ModifyEquipmentCommand());
         commands.Add(new RentCommand());
         commands.Add(new ReturnCommand());
+        commands.Add(new SaveCommand());
+        commands.Add(new LoadCommand());
 
         
         ShowUiScreen();

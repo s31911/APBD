@@ -2,6 +2,11 @@
 using ConsoleApp1.rentals;
 
 namespace ConsoleApp1.persons;
+using System.Text.Json.Serialization;
+// https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/polymorphism?pivots=dotnet-7-0#polymorphic-type-discriminators
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+[JsonDerivedType(typeof(Student), "Student")]
+[JsonDerivedType(typeof(Employee), "Employee")]
 
 public abstract class Person 
 {
@@ -39,15 +44,18 @@ public abstract class Person
         return persons;
     }
 
-    public void ShowRentedEquipment()
+    public bool ShowRentedEquipment()
     {
+        bool somethinFound = false;
         foreach (var rental in Rental.Rentals)
         {
             if (rental.Person == this && rental.ReturnDate == null)
             {
+                somethinFound = true;
                 Console.WriteLine(rental);
             }
         }
+        return somethinFound;
     }
 
     public static void ShowAllPersons()

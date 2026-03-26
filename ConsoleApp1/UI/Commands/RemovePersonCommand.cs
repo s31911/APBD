@@ -17,6 +17,7 @@ public class RemovePersonCommand : MyCommand
         {
             int idToRemove = int.Parse(Console.ReadLine());
             Person.persons.RemoveAll(x => x.Id == idToRemove);
+            CommandExecutedSuccessfully();
         }
         catch (Exception ignored)
         {

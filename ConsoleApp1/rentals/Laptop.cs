@@ -4,11 +4,19 @@ public class Laptop : Equipment
 {
     public int StorageCapacity { get; set; }
     public string Brand { get; set; }
-    
+
+    public Laptop()
+    {
+        
+    }
     public Laptop(string name, AvailabilityStatus status,int storageCapacity,string brand ) : base(name, status)
     {
         Brand = brand;
         StorageCapacity = storageCapacity;
     }
-    
+
+    public override string ToString()
+    {
+        return base.ToString() + $" Storage Capacity {StorageCapacity}, Brand {Brand}";
+    }
 }

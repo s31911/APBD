@@ -17,10 +17,11 @@ public class RemoveEquipmentCommand : MyCommand
         {
             int idToRemove = int.Parse(Console.ReadLine());
             Equipment.Equipments.RemoveAll(x => x.Id == idToRemove);
+            CommandExecutedSuccessfully();
         }
         catch (Exception ignored)
         {
-            Console.WriteLine("Please enter a valid id");
+            Console.WriteLine("Please enter a valid id!");
             Console.ReadKey();    
         }
     }

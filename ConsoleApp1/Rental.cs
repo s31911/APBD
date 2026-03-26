@@ -8,14 +8,24 @@ public class Rental
 {
     #nullable enable
     public static List<Rental> Rentals = new List<Rental>();
-    private static int _lastId = 0; 
-    
-    public int id { get; set; }
+    private static int _lastId = 0;
+
+    public int id = GetNewId();
     public DateTime RentDate { get; set; }
     public DateTime PlanedReturnDate { get; set; }
     public DateTime? ReturnDate { get; set; }
     public Equipment Equipment{ get; set; }
     public Person Person { get; set; }
+
+    public Rental()
+    {
+        
+    }
+
+    private static int GetNewId()
+    {
+        return _lastId++;
+    }
     public Rental(Equipment equipment, Person person, DateTime planedReturnDate)
     {
 
@@ -24,6 +34,7 @@ public class Rental
         id = _lastId++;
         Person = person;
         Equipment = equipment;
+        equipment.Availability = Equipment.AvailabilityStatus.Unavailable;
         PlanedReturnDate = planedReturnDate;
         RentDate = DateTime.Now;
         Rentals.Add(this);
@@ -44,7 +55,15 @@ public class Rental
 
     public override string ToString()
     {
-        return $"Rental #{id} {Equipment} by {Person} on {RentDate} Planned return: {PlanedReturnDate} Actual Return: {(ReturnDate.ToString() ?? "Not yed returned" )}";
+        return $"Rental #{id}: {Equipment} RENTED BY {Person} ON {RentDate} Planned return: {PlanedReturnDate} Actual Return: {(ReturnDate.ToString() ?? "Not yed returned" )}";
+    }
+
+    public static void ShowAllRentals()
+    {
+        foreach (var rental in Rentals)
+        {
+            Console.WriteLine(rental);
+        }
     }
 
     public static void ShowReport()

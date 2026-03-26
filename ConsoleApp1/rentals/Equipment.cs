@@ -1,4 +1,12 @@
-﻿namespace ConsoleApp1.rentals;
+﻿using System.Text.Json.Serialization;
+using ConsoleApp1.persons;
+
+namespace ConsoleApp1.rentals;
+
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+[JsonDerivedType(typeof(Camera), "Camera")]
+[JsonDerivedType(typeof(Laptop), "Laptop")]
+[JsonDerivedType(typeof(Projector), "Projector")]
 
 public abstract class Equipment
 {
@@ -10,6 +18,11 @@ public abstract class Equipment
     public enum AvailabilityStatus
     {
         Available ,Unavailable
+    }
+
+    public Equipment()
+    {
+        
     }
     protected Equipment(string name,AvailabilityStatus status) 
     {
@@ -54,7 +67,8 @@ public abstract class Equipment
     {
         foreach (var equipment in Equipments)
         {
-            if(equipment.Availability == AvailabilityStatus.Unavailable) Console.WriteLine(equipment);
+            if(equipment.Availability == AvailabilityStatus.Unavailable && 
+               Rental.Rentals.TrueForAll(x=>!x.Equipment.Equals(equipment))) Console.WriteLine(equipment);
         }
     }
 
@@ -74,7 +88,7 @@ public abstract class Equipment
                 available++;
             }
         }
-        Console.WriteLine($"Equipments: |Available : {available} |Unavailable : {unavailable}|Total : {Equipments.Count}|");
+        Console.WriteLine($"Equipments: |Available : {available} |Unavailable : {unavailable}|Total : {Equipments.Count}| ");
 
     }
     
