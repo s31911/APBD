@@ -14,10 +14,11 @@ Aplikacje dla spełnienia wymogów biznesowych zdecydowałem się podzielić na 
 * rentals - wyposażenie do wypożyczenia
 * rental - faktyczną instancję wypożyczenia
 * UI - menu tekstowe
-Persons i rentals są bardzo podobne, obie posiadają abstrakcyjne klasy bazowe (odpowiednio Person i Equipment) do których są wyciagnięte cześci wspóle klas szczegółowych.
+
+Persons i rentals są bardzo podobne, obie posiadają abstrakcyjne klasy bazowe (odpowiednio Person i Equipment) do których są wyciągnięte cześci wspóle klas szczegółowych.
 Obie te klasy posiadają statyczną listę ze wszystkimi obiektami tej klasy.
 
-Unikatowe identyfikatory w obu klasach polegają poprostu na polu int inkrementowanym przy każdym nowym obiekcie podklasy. Są one unikatowe tylko w ramach swojej klasy (znaczy to że nie będzie studenta i employee o tym samym Id ale może być equipment i student z tym samym Id.
+Unikatowe identyfikatory w obu klasach polegają poprostu na polu int inkrementowanym przy każdym nowym obiekcie podklasy. Są one unikatowe tylko w obrębie swojej klasy (znaczy to że nie będzie studenta i employee o tym samym Id ale może być equipment i student z tym samym Id).
 
 Rental jest klasą odpowiedzialną za każde pojedyńcze wypożyczenie posiada informacje kto, co, kiedy, do kiedy wypożyczył i kiedy powinien być planowy zwrot.
 
