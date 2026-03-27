@@ -14,6 +14,9 @@ public class Program
     public static bool exit = false;
     public static void Main()
     {
+        // basic aplication test
+        //Test();
+        
         AppDatabase.AutoLoad();
         UiHandler  uiHandler = new UiHandler();
         while (exit == false)

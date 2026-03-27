@@ -12,7 +12,7 @@ public class RentalLimitExceededException : Exception
 
     
     public RentalLimitExceededException(Person person) 
-        : base($"Person with id: {person.Id} and name {person.GetFullName()}tried to exceed the maximum limit of {person.GetRentLimit()}")
+        : base($"Person with id: {person.Id} and name {person.GetFullName()} tried to exceed the maximum rental limit of {person.GetRentLimit()}")
     {
         
         RentalLimit = person.GetRentLimit();

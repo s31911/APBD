@@ -30,9 +30,10 @@ public class Rental
     {
 
         if (person.GetRentLimit() < person.CurrentlyRent + 1) throw new RentalLimitExceededException(person);
-        if (equipment.Availability == Equipment.AvailabilityStatus.Unavailable) throw new EquipmentUnavalibleForRentException(this);
+        if (equipment.Availability == Equipment.AvailabilityStatus.Unavailable) throw new EquipmentUnavalibleForRentException(equipment, person);
         id = _lastId++;
         Person = person;
+        person.CurrentlyRent++;
         Equipment = equipment;
         equipment.Availability = Equipment.AvailabilityStatus.Unavailable;
         PlanedReturnDate = planedReturnDate;
